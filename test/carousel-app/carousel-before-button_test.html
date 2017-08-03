@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>carousel-before-button test</title>
+
+    <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../../src/carousel-app/carousel-before-button.html">
+</head>
+<body>
+
+<test-fixture id="DefaultTestFixture">
+    <template>
+        <carousel-before-button></carousel-before-button>
+    </template>
+</test-fixture>
+
+<script>
+    suite('carousel-before-button', function () {
+        var element;
+        setup(function () {
+            element = fixture('DefaultTestFixture');
+        });
+        test('Should be has a detail element in event.', function (done) {
+            element.addEventListener('before-button-clicked', function (event) {
+                assert.notPropertyVal(event, 'detail', undefined, 'detail can not be undefined');
+                done();
+            });
+            element._handlerBackButtonTapped();
+        });
+        test('Should be has a bubbles true element.', function (done) {
+            element.addEventListener('before-button-clicked', function (event) {
+                assert.propertyVal(event, 'bubbles', true, 'Bubbles needs be true because we have to use it in a parent node.');
+                done();
+            });
+            element._handlerBackButtonTapped();
+        });
+        test('Should be has a composed true element.', function (done) {
+            element.addEventListener('before-button-clicked', function (event) {
+                assert.propertyVal(event, 'composed', true, 'Composed needs be true because we have to use it out of the shadow DOM.');
+                done();
+            });
+            element._handlerBackButtonTapped();
+        });
+        test('Should be has an index element and it is not undefined.', function (done) {
+            element.addEventListener('before-button-clicked', function (event) {
+                assert.notPropertyVal(event.detail, 'index', undefined, 'Index can not be undefined');
+                done();
+            });
+            element._handlerBackButtonTapped();
+        });
+        test('Should be has an index element in the current picture.', function (done) {
+            element.addEventListener('before-button-clicked', function (event) {
+                assert.property(event.detail, 'index', 'Include the index of current picture.');
+                done();
+            });
+            element._handlerBackButtonTapped();
+        });
+    });
+</script>
+
+</body>
+</html>

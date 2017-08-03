@@ -1,32 +1,31 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="carousel-slider.html">
 
 <dom-module id="carousel-app">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]!</h2>
-  </template>
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <carousel-slider></carousel-slider>
+    </template>
 
-  <script>
-    /**
-     * @customElement
-     * @polymer
-     */
-    class CarouselApp extends Polymer.Element {
-      static get is() { return 'carousel-app'; }
-      static get properties() {
-        return {
-          prop1: {
-            type: String,
-            value: 'carousel-app'
-          }
-        };
-      }
-    }
+    <script>
+        (function CarouselAppDefinition(customElements) {
+            'use strict';
 
-    window.customElements.define(CarouselApp.is, CarouselApp);
-  </script>
+            /**
+             * @customElement
+             * @polymer
+             */
+            class CarouselApp extends Polymer.Element {
+                static get is() {
+                    return 'carousel-app';
+                }
+            }
+
+            window.customElements.define(CarouselApp.is, CarouselApp);
+        })(window.customElements);
+    </script>
 </dom-module>
