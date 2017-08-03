@@ -8,7 +8,9 @@
                 display: block;
             }
         </style>
-        <carousel-slider></carousel-slider>
+        <carousel-slider sliders="[[items]]" current="[[current]]">
+            <slot id="slot"></slot>
+        </carousel-slider>
     </template>
 
     <script>
@@ -22,6 +24,42 @@
             class CarouselApp extends Polymer.Element {
                 static get is() {
                     return 'carousel-app';
+                }
+
+                connectedCallback() {
+                    super.connectedCallback();
+                    const slot = this.$.slot;
+                    let listNodes = slot.assignedNodes({flatten: true});
+                    let isCurrent = true;
+                    listNodes.forEach(node => {
+                        let result = [];
+                        if (node.className !== undefined) {
+                            this.push('items', {
+                                node: node,
+                                isCurrent: isCurrent
+                            });
+                            if (isCurrent) {
+                                isCurrent = false;
+                            }
+                        }
+                        return result;
+                    });
+                    console.log(this.items);
+                }
+
+                static get properties() {
+                    return {
+                        items: {
+                            type: Array,
+                            value() {
+                                return [];
+                            }
+                        },
+                        current: {
+                            type: Number,
+                            value: 0
+                        }
+                    };
                 }
             }
 

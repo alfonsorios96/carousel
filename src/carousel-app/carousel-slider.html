@@ -1,9 +1,28 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="carousel-before-button.html">
+<link rel="import" href="carousel-button.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
 
 <dom-module id="carousel-slider">
     <template>
-        <carousel-before-button></carousel-before-button>
+        <style>
+            .container {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+        </style>
+        <div class="container">
+            <carousel-button direction="left"
+                             image-url="https://image.freepik.com/iconos-gratis/flecha-izquierda_318-61472.jpg"></carousel-button>
+            <template is="dom-repeat" items="[[sliders]]">
+                <template is="dom-if" if="true">
+                    <h2>Holi[[item]]</h2>
+                </template>
+            </template>
+            <carousel-button direction="right"
+                             image-url="https://image.freepik.com/iconos-gratis/puntas-de-flecha-derecha_318-60569.png"></carousel-button>
+        </div>
     </template>
 
     <script>
@@ -17,6 +36,13 @@
             class CarouselSlider extends Polymer.Element {
                 static get is() {
                     return 'carousel-slider';
+                }
+
+                static get properties() {
+                    return {
+                        items: Array,
+                        current: Object
+                    };
                 }
             }
 

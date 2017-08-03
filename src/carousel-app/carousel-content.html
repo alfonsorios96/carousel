@@ -1,0 +1,36 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="carousel-content">
+    <template>
+        <style>
+            .container {
+                border: 1px solid;
+                width: 500px;
+                height: 400px;
+                display: flex;
+                align-items: center;
+            }
+        </style>
+        <div class="container">
+            <h2>Hola mundo</h2>
+        </div>
+    </template>
+
+    <script>
+        (function CarouselContentDefinition() {
+            'use strict';
+
+            /**
+             * @customElement
+             * @polymer
+             */
+            class CarouselContent extends Polymer.Element {
+                static get is() {
+                    return 'carousel-content';
+                }
+            }
+
+            customElements.define(CarouselContent.is, CarouselContent);
+        })(window.customElements);
+    </script>
+</dom-module>

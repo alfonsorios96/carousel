@@ -1,0 +1,52 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+
+<dom-module id="carousel-button">
+    <template>
+        <style>
+            .container img {
+                width: var(--width-button, 100px);
+                height: var(--height-button, 40px);
+                cursor: pointer;
+            }
+        </style>
+        <div class="container">
+            <img src="[[imageUrl]]" alt="[[direction]]" on-tap="_handlerButtonTapped">
+        </div>
+    </template>
+    <script>
+        (function CarouselButtonDefinition(customElements) {
+            'use strict';
+
+            class CarouselButton extends Polymer.GestureEventListeners(Polymer.Element) {
+                static get is() {
+                    return 'carousel-button';
+                }
+
+                static get properties() {
+                    return {
+                        imageUrl: {
+                            type: String
+                        },
+                        direction: {
+                            type: String,
+                            notify: true
+                        }
+                    };
+                }
+
+                _handlerButtonTapped(event) {
+                    this.dispatchEvent(new CustomEvent('button-clicked', {
+                        bubbles: true,
+                        composed: true,
+                        detail: {
+                            direction: this.direction
+                        }
+                    }));
+                }
+            }
+
+            customElements.define(CarouselButton.is, CarouselButton);
+        })(window.customElements);
+    </script>
+</dom-module>
