@@ -1,0 +1,7 @@
+{
+  "name": "carousel",
+  "short_name": "carousel",
+  "description": "Carousel in Polymer 2",
+  "start_url": "/",
+  "display": "standalone"
+}
