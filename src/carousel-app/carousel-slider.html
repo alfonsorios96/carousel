@@ -14,14 +14,16 @@
         </style>
         <div class="container">
             <carousel-button direction="left"
-                             image-url="https://image.freepik.com/iconos-gratis/flecha-izquierda_318-61472.jpg"></carousel-button>
+                             image-url="https://image.freepik.com/iconos-gratis/flecha-izquierda_318-61472.jpg"
+                             on-button-clicked="_handlerButton"></carousel-button>
             <template is="dom-repeat" items="[[sliders]]">
-                <template is="dom-if" if="true">
-                    <h2>Holi[[item]]</h2>
+                <template is="dom-if" if="[[item.isCurrent]]">
+                    [[index]]
                 </template>
             </template>
             <carousel-button direction="right"
-                             image-url="https://image.freepik.com/iconos-gratis/puntas-de-flecha-derecha_318-60569.png"></carousel-button>
+                             image-url="https://image.freepik.com/iconos-gratis/puntas-de-flecha-derecha_318-60569.png"
+                             on-button-clicked="_handlerButton"></carousel-button>
         </div>
     </template>
 
@@ -40,9 +42,39 @@
 
                 static get properties() {
                     return {
-                        items: Array,
-                        current: Object
+                        sliders: Array
                     };
+                }
+
+                _handlerButton(event) {
+                    this.__moveCurrentIndex(event.detail.direction);
+                }
+
+                __moveCurrentIndex(direction) {
+                    let index = 0;
+                    for (let item of this.sliders) {
+                        if (item.isCurrent) {
+                            this.set(`sliders.${index}.isCurrent`, false);
+                            switch (direction) {
+                                case 'left':
+                                    if (index === 0) {
+                                        this.set(`sliders.${(this.sliders.length - 1)}.isCurrent`, true);
+                                    } else {
+                                        this.set(`sliders.${(index - 1)}.isCurrent`, true);
+                                    }
+                                    break;
+                                case 'right':
+                                    if (index === (this.sliders.length - 1)) {
+                                        this.set(`sliders.0.isCurrent`, true);
+                                    } else {
+                                        this.set(`sliders.${(index + 1)}.isCurrent`, true);
+                                    }
+                                    break;
+                            }
+                            return;
+                        }
+                        index++;
+                    }
                 }
             }
 

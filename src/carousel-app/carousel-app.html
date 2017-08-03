@@ -8,7 +8,7 @@
                 display: block;
             }
         </style>
-        <carousel-slider sliders="[[items]]" current="[[current]]">
+        <carousel-slider sliders="[[items]]">
             <slot id="slot"></slot>
         </carousel-slider>
     </template>
@@ -44,7 +44,6 @@
                         }
                         return result;
                     });
-                    console.log(this.items);
                 }
 
                 static get properties() {
@@ -54,10 +53,6 @@
                             value() {
                                 return [];
                             }
-                        },
-                        current: {
-                            type: Number,
-                            value: 0
                         }
                     };
                 }
