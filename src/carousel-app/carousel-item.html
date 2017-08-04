@@ -3,14 +3,14 @@
 <dom-module id="carousel-item">
     <template>
         <style>
-            .container {
-                border: 2px solid;
-                width: 50px;
-                height: 50px;
+            #container {
+                display: flex;
+                width: 400px;
+                height: 300px;
             }
         </style>
-        <div>
-          <img src="assets/img/img0[[indexitem]].jpg">
+        <div id="container">
+
         </div>
     </template>
 
@@ -27,22 +27,22 @@
                     return 'carousel-item';
                 }
 
+                connectedCallback() {
+                    super.connectedCallback();
+                    if (this.element !== undefined) {
+                        this.$.container.innerHTML = this.element.node.innerHTML;
+                        // console.log(this.$.container);
+                        // console.log(this.element.node.innerHTML);
+                    }
+                }
+
                 static get properties() {
                     return {
-                        item:  {
-                          type : Number
-                        },
-                        indexitem:  {
-                          type : Number,
-                          computed : `computedindexitem(item)`
-                        },
+                        element: {
+                            type: Object
+                        }
                     };
                 }
-
-                computedindexitem(item) {
-                  return item + 1;
-                }
-
             }
 
             customElements.define(CarouselItem.is, CarouselItem);

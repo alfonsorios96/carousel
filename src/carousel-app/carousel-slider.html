@@ -22,9 +22,9 @@
                              on-button-clicked="_handlerButton"></carousel-button>
             <template is="dom-repeat" items="[[sliders]]">
                 <template is="dom-if" if="[[item.isCurrent]]">
-                  <!--GERARDO-->
-                  <carousel-item item="[[index]]"></carousel-item>
-                  <!--FIN GERARDO-->
+                    <!--GERARDO-->
+                    <carousel-item element="[[item]]"></carousel-item>
+                    <!--FIN GERARDO-->
 
                 </template>
             </template>
