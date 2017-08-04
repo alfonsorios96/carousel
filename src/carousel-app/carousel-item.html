@@ -9,8 +9,8 @@
                 height: 50px;
             }
         </style>
-        <div class="container">
-            <slot></slot>
+        <div>
+          <img src="assets/img/img0[[indexitem]].jpg">
         </div>
     </template>
 
@@ -26,6 +26,23 @@
                 static get is() {
                     return 'carousel-item';
                 }
+
+                static get properties() {
+                    return {
+                        item:  {
+                          type : Number
+                        },
+                        indexitem:  {
+                          type : Number,
+                          computed : `computedindexitem(item)`
+                        },
+                    };
+                }
+
+                computedindexitem(item) {
+                  return item + 1;
+                }
+
             }
 
             customElements.define(CarouselItem.is, CarouselItem);

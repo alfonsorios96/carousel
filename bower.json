@@ -3,7 +3,11 @@
   "description": "Carousel in Polymer 2",
   "main": "index.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "cpol-image": "^1.0.0",
+    "paper-button": "^2.0.0",
+    "paper-dialog": "^2.0.0",
+    "paper-input": "^2.0.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

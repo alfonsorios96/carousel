@@ -3,6 +3,10 @@
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
 
+<!--GERARDO-->
+<link rel="import" href="carousel-item.html">
+<!--FIN GERARDO-->
+
 <dom-module id="carousel-slider">
     <template>
         <style>
@@ -18,7 +22,10 @@
                              on-button-clicked="_handlerButton"></carousel-button>
             <template is="dom-repeat" items="[[sliders]]">
                 <template is="dom-if" if="[[item.isCurrent]]">
-                    [[index]]
+                  <!--GERARDO-->
+                  <carousel-item item="[[index]]"></carousel-item>
+                  <!--FIN GERARDO-->
+
                 </template>
             </template>
             <carousel-button direction="right"
