@@ -1,18 +1,18 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
 <dom-module id="carousel-button">
     <template>
         <style>
-            .container img {
-                width: var(--width-button, 100px);
-                height: var(--height-button, 40px);
+            .container {
+                width: var(--width-button, 60px);
+                height: var(--height-button, 60px);
                 cursor: pointer;
             }
         </style>
-        <div class="container">
-            <img src="[[imageUrl]]" alt="[[direction]]" on-tap="_handlerButtonTapped">
-        </div>
+        <paper-icon-button src="[[imageUrl]]" class="container" alt="[[direction]]" on-tap="_handlerButtonTapped">
+        </paper-icon-button>
     </template>
     <script>
         (function CarouselButtonDefinition(customElements) {

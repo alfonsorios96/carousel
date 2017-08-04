@@ -18,7 +18,7 @@
         </style>
         <div class="container">
             <carousel-button direction="left"
-                             image-url="https://image.freepik.com/iconos-gratis/flecha-izquierda_318-61472.jpg"
+                             image-url="../../assets/button_back.png"
                              on-button-clicked="_handlerButton"></carousel-button>
             <template is="dom-repeat" items="[[sliders]]">
                 <template is="dom-if" if="[[item.isCurrent]]">
@@ -29,7 +29,7 @@
                 </template>
             </template>
             <carousel-button direction="right"
-                             image-url="https://image.freepik.com/iconos-gratis/puntas-de-flecha-derecha_318-60569.png"
+                             image-url="../../assets/button_foward.png"
                              on-button-clicked="_handlerButton"></carousel-button>
         </div>
     </template>
